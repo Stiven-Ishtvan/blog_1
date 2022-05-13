@@ -1,5 +1,3 @@
-import { myToken } from "./myToken";
-
 const onResponce = (res) => {
   return res.ok ? res.json() : Promise.reject(`Ошибка: ${res.status}`);
 };
@@ -11,7 +9,9 @@ class Api {
   }
 
   getPosts(postID) {
-    const requestURL= postID ? `${this._url}/posts/${postID}` : `${this._url}/posts/`;
+    const requestURL = postID
+      ? `${this._url}/posts/${postID}`
+      : `${this._url}/posts/`;
     return fetch(requestURL, {
       headers: {
         authorization: `Bearer ${this._token}`,
@@ -19,13 +19,6 @@ class Api {
     }).then(onResponce);
   }
 
-  getUserInfo() {
-    return fetch(`${this._url}/users/me`, {
-      headers: {
-        authorization: `Bearer ${this._token}`,
-      },
-    }).then(onResponce);
-  }
 
   editPosts(postID, freshItem) {
     return fetch(`${this._url}/posts/${postID}`, {
@@ -35,6 +28,15 @@ class Api {
             'Content-Type': 'application/json',
         },
         body: JSON.stringify(freshItem),
+    }).then(onResponce);
+}
+
+
+  getUserInfo() {
+    return fetch(`${this._url}/users/me`, {
+      headers: {
+        authorization: `Bearer ${this._token}`,
+      },
     }).then(onResponce);
   }
 
@@ -65,46 +67,101 @@ class Api {
     }).then(onResponce);
   }
 
-  createPost(post){
+  createPost(post) {
     return fetch(`${this._url}/posts`, {
       method: "POST",
       headers: {
         authorization: `Bearer ${this._token}`,
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(post)
+      body: JSON.stringify(post),
     }).then(onResponce);
   }
-    
-    getComments(postID){
-      return fetch(`${this._url}/posts/comments/${postID}`, {
-        headers: {
-          authorization: `Bearer ${this._token}`,
-        },
-      }).then(onResponce);
-    }
 
-    addComment(comment,postID){
-      return fetch(`${this._url}/posts/comments/${postID}`, {
-        method: "POST",
-        headers: {
-          authorization: `Bearer ${this._token}`,
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify(comment)
-      }).then(onResponce);
-    }
-    deleteComment(postID, commentID) {
-      return fetch(`${this._url}/posts/comments/${postID}/${commentID}`, {
-        method: "DELETE",
-        headers: {
-          authorization: `Bearer ${this._token}`,
-        },
-      }).then(onResponce);
-    }
+  getComments(postID) {
+    return fetch(`${this._url}/posts/comments/${postID}`, {
+      headers: {
+        authorization: `Bearer ${this._token}`,
+      },
+    }).then(onResponce);
+  }
 
+  addComment(comment, postID) {
+    return fetch(`${this._url}/posts/comments/${postID}`, {
+      method: "POST",
+      headers: {
+        authorization: `Bearer ${this._token}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(comment),
+    }).then(onResponce);
+  }
+  
+  deleteComment(postID, commentID) {
+    return fetch(`${this._url}/posts/comments/${postID}/${commentID}`, {
+      method: "DELETE",
+      headers: {
+        authorization: `Bearer ${this._token}`,
+      },
+    }).then(onResponce);
+  }
+
+  getUsers(userID) {
+    return fetch(`${this._url}/users/${userID}`, {
+      headers: {
+        authorization: `Bearer ${this._token}`,
+      },
+    }).then(onResponce);
+  }
+
+  getSearch(query){
+    return fetch(`${this._url}/posts/search/?query=${query}`, {
+      headers: {
+        authorization: `Bearer ${this._token}`,
+      },
+    }).then(onResponce);
+  }
+
+  editUser(freshItem) {
+    return fetch(`${this._url}/users/me `, {
+        method: 'PATCH',
+        headers: {
+            authorization: `Bearer ${this._token}`,
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(freshItem),
+    }).then(onResponce);
+}
+editUserAvatar(freshItem) {
+  return fetch(`${this._url}/users/me/avatar `, {
+      method: 'PATCH',
+      headers: {
+          authorization: `Bearer ${this._token}`,
+          'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(freshItem),
+  }).then(onResponce);
 }
 
+signUp(userData){
+  return fetch(`${this._url}/signup`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(userData)
+  }).then(onResponce);
+}
 
+signIn(userData){
+  return fetch(`${this._url}/signin`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(userData)
+  }).then(onResponce);
+}
+}
 
-export default new Api(myToken);
+export default Api;

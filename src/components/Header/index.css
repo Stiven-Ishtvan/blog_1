@@ -1,24 +1,31 @@
 .header {
-  padding: 40px calc(50% - 496px);
-  background-color: #b99dfa;
   display: flex;
-  justify-content: space-between;
+  
+  margin: 0;
+  justify-content: space-around;
   align-items: center;
-  gap: 90px;
+  border-bottom: 1px rgb(20, 19, 19) solid;
+  padding:10px;
+  height:150px;
+  background-color: #b99dfa;
+  
 }
 
-nav {
-  display: flex;
-  gap: 10px;
-}
-
-
-
-
-.links button {
+.logo {
+  
+  font-weight: 800;
   font-family: Bad Script;
-  font-size: 22px;
-  font-weight: bold;
+  cursor: pointer;
+}
+
+.logo:hover {
+  color: #b99dfa;
+}
+
+.createButton {
+  font-family: Bad Script;
+  font-size: 18px;
+  font-weight: bolder;
   padding: 6px 0 4px 10px;
   border: 1px solid #cecece;
   background: #F6F6f6;
@@ -28,5 +35,104 @@ nav {
   height:50px;
   width:150px;
   color: #000000;
+  align-items: center;
+}
+
+.user img{
+  width: 42px;
+  height: 42px;
+  border-radius: 18px;
+
+}
+.user{
+  width: fit-content;
+  display: flex;
+  cursor: pointer;
+background-color: rgb(255, 255, 255);
+border-radius: 18px;
+transition: 0.5s linear;
+padding:5px 5px 5px 10px
+
+}
+
+.user:hover{
+  background-color: rgb(199, 205, 255);
+  }
+
+.userInfo{
+  margin:5px
+}
+
+h1{
+  font-family:Bad Script;
+  font-weight: 900;
+}
+label{
+  width:70px;
+  font-size: 18px;
+}
+
+.createBut{
+  font-size: 18px;
+  border-radius: 18px;
+  color: rgb(0, 0, 0);
+}
+.createBut:hover{
+  color:#b99dfa;
+}
+/* .textfield{
+  display: flex;
+  align-items: center;
+  width:650px
+} */
+
+
+
+.search {
+	display: flex;
+	align-items: center;
+	position: relative;
+	/* flex: 1; */
+  width: 650px;
+}
+
+.search__input {
+	width: 100%;
+	border-radius: 18px;
+	border: 1px solid transparent;
+	outline: none;
+	padding: 13px 20px;
+	color: #000;
+	font-size: 16px;
+	line-height: 20px;
+	caret-color: #2e08b8;
+}
+.search__input:focus {
+	background: #FFFFFF;
+	border: 1px solid #b99dfa;
+}
+
+.search__input::placeholder {
+	color: #7b8e98;
+}
+
+.search__btn {
+	background-color: transparent;
+	outline: none;
+	border: none;
+	padding: 0;
+	cursor: pointer;
+	right: 5px;
+	
+}
+.search__btn svg {
+	fill: #7B8E98;
+ 
+}
+.search__btn_disabled svg {
+	fill: #CFD8DC;
   
+}
+.search__btn:hover svg{
+	fill: #b99dfa;
 }

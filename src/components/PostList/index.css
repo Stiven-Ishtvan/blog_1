@@ -5,15 +5,23 @@
     margin: 0px 50px;
     width: auto;
 
+    
 
-   
-  
 }
 
 
+.numButton {
+    padding:10px;
+    margin: 2px;
+    background-color: rgb(255, 255, 255);
+    
+    cursor: pointer;
+}
 
-
-
+.postContainer{
+    display: flex;
+    justify-content: center;
+}
 .buttonBlock{
     margin:10px 200px 10px 200px;
     display: -webkit-box;
@@ -33,17 +41,19 @@
     justify-content: center;
 }
 
-.numButton {
-    padding:10px;
-    margin: 2px;
-    background-color: rgb(255, 255, 255);
-    border-radius: 20%;
+
+
+.link{font-size: medium;
+    margin-top: 5px;
+    color: blue;
+    font-weight: 700;
+    opacity: 65%;
     cursor: pointer;
-    
-  
-   
-  
-    
+    margin-right: 20px;
+    transition: 0.5s;
+}
+.link:hover{
+    opacity: 100%;
 }
 
 
